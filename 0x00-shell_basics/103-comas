@@ -1,0 +1,2 @@
+#!/bin/bash
+( (ls -a | grep -E '^[0-9A-Za-z]' | sort -t$'\n' -d) ; (ls -a | grep -E '^(\.\.|\.){1}$') ) | paste -s -d',' - ; echo
