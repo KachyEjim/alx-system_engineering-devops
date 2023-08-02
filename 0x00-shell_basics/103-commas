@@ -1,2 +1,2 @@
 #!/bin/bash
-{ echo .; echo ..; { ls -1Ap | grep -v '^\.\.$' | grep -v '^\.$' | LC_ALL=C sort -t/ -k1,1 | tr '\n' ', '; } | echo; }
+ls -1Ap | { echo .; echo ..; sed '/^.*\/$/! s/$/\//'; }
