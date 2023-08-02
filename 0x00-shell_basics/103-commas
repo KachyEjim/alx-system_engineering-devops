@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(find . -maxdepth 1 -type f | sort | tr '\n' ', ')$(find . -maxdepth 1 -type d | sort | tr '\n' ', ' | sed 's/,$/\n/')
+echo ./* | tr ' ' ',' | sed 's/,.\//,.\//g'
