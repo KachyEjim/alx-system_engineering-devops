@@ -1,2 +1,2 @@
 #!/bin/bash
-chown betty:$(id -gn gallum) hello
+chown betty:$(id -gn gallum) ./hello
