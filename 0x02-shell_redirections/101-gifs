@@ -1,0 +1,2 @@
+#!/bin/bash
+find -name ".git" -o -name ".*" -type f | rev | cut -d "/" -f1 | rev | LC_COLLATE=C sort
