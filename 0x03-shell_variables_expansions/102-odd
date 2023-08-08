@@ -1,2 +1,3 @@
 #!/bin/bash
-awk 'NR%2==1'
+paste -d -- | cut -d, -ficase 
+ 
