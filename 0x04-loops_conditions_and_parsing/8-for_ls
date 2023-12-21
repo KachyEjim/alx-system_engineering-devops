@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#a Bash script that displays
+
+contents=$(ls)  # To store the result of the ls command in the variable "contents"
+for file in $contents; do
+    if [ ! -f "$file" ]; then
+        continue
+    fi
+    filename=$(echo "$file" | cut -d '-' -f 2-)
+    echo "$filename"
+done

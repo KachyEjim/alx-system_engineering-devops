@@ -9,7 +9,7 @@ while [ $h -le 12 ]; do
         echo "$m"
         ((m++))
         if [ "$m" -eq 60 ]; then
-            m=0
+            m=1
             break
         fi
     done
