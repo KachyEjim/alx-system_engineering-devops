@@ -9,7 +9,7 @@
  *
  */
 
-int infinite_while()
+int infinite_while(void)
 {
 	while (1)
 	{
@@ -24,7 +24,7 @@ int infinite_while()
  * Return: Always 1.
  */
 
-int main()
+int main(void)
 {
 	pid_t pid;
 	int count = 0;
