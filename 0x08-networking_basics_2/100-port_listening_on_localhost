@@ -1,0 +1,9 @@
+#!/bin/env bash
+# a Bash script that listens on port 98 on localhost
+
+# Define the port to listen on
+port=98
+
+# Listen for incoming connections on the specified port
+nc -l -p "$port"
+
