@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # a Bash script that pings an IP address passed as an argument.
 
 # Checking if an argument is provided
