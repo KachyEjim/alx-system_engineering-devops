@@ -1,5 +1,7 @@
-#!/bin/env bash
-
+#!/usr/bin/env bash
+# a Bash script that uses ssh to connect
+#to your server using the private key
+#~/.ssh/school with the user ubuntu.
 # Define variables
 server_ip="100.24.242.165"
 private_key="~/.ssh/school"
