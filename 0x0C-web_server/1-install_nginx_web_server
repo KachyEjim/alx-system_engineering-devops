@@ -11,4 +11,4 @@ sed -i 's/^\(listen\s*\)[0-9]\+\s*\(.*\)/\1 80\2/g' /etc/nginx/sites-available/d
 service nginx restart
 
 # Create a simple HTML file with "Hello World!" content
-echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
