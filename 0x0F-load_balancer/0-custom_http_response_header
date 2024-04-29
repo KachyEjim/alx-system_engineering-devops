@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Configure Nginx so that its HTTP response contains a custom header
+echo "add_header X-Served-By" | tee -a "/etc/nginx/nginx.conf" > /dev/null
+service reload nginx
