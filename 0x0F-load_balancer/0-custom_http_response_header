@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
-# Install nginx web server
+
+
 # Update package lists and install Nginx
 apt-get update
 apt-get install -y nginx
 
-# Modify the Nginx default configuration to listen on port 80
-sed -i 's/^\(listen\s*\)[0-9]\+\s*\(.*\)/\1 80\2/g' /etc/nginx/sites-available/default
+echo "Holberton School for the win!" | tee /var/www/html/index.nginx-debian.html > /dev/null
+echo "Ceci n'est pas une page - 404" | tee /var/www/html/custom_404.html > /dev/null
 
-# Create a simple HTML file with "Hello World!" content
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+# config redirection
+sed -i '/^\sserver_name.*/a \        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
-# Restart Nginx to apply changes
-service nginx restart
+# config custom 404
+sed -i '/^\slocation.*/i \        error_page 404 /custom_404.html;' /etc/nginx/sites-available/default
+
+# shellcheck disable=SC2154
+# config custom response header
+sed -i '/^\slocation.*/i \        add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
+
+# run server
+service nginx start
