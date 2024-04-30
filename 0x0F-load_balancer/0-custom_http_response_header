@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
-# Update package lists and install Nginx
-apt-get update
-apt-get install -y nginx
+# Configure nginx web server with custom response header
+
+INDEX_COPY=
+ERROR_COPY=
+
+apt-get -y update
+apt-get -y install nginx
 
 echo "Holberton School for the win!" | tee /var/www/html/index.nginx-debian.html > /dev/null
 echo "Ceci n'est pas une page - 404" | tee /var/www/html/custom_404.html > /dev/null
