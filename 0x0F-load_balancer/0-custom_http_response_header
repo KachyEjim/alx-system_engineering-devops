@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # Configure nginx web server with custom response header
 
-INDEX_COPY=
-ERROR_COPY=
-
 apt-get -y update
 apt-get -y install nginx
 
