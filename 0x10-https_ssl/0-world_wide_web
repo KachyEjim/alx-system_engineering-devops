@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Script that displays information about a domain name
+
+# Check if the subdomain argument is provided
+if [ -n "$2" ]; then
+    subdomain=$2 
+else
+    subdomain=("www" "lb-01" "web-01" "web-02") 
+fi
+
+print_domain_info() {
+    for sub in "${subdomain[@]}"; do
+        query="${sub}.$1"
+        dig "${query}" | awk '/^;; ANSWER SECTION:/ {getline; split($1, parts, "."); print "The subdomain " parts[1] " is an A record and points to " $NF}'
+    done
+}
+
+print_domain_info "$1"
