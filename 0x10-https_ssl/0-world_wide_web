@@ -11,7 +11,7 @@ fi
 print_domain_info() {
     for sub in "${subdomain[@]}"; do
         query="${sub}.$1"
-        dig "${query}" | awk '/^;; ANSWER SECTION:/ {getline; split($1, parts, "."); print "The subdomain " parts[1] " is an A record and points to " $NF}'
+        dig "${query}" | awk '/^;; ANSWER SECTION:/ {getline; split($1, parts, "."); print "The subdomain " parts[1] " is a A record and points to " $NF}'
     done
 }
 
