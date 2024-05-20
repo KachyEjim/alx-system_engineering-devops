@@ -27,10 +27,11 @@ def get_employee_tasks(employeeId):
 
     # Write rows to the CSV file
     for task in data_todos:
-        userId = task.get("userId")
-        name = data_user.get("name")
-        title = task.get("title")
-        writer.writerow([userId, name, title])
+        if task.get('completed') is True:
+            userId = task.get("userId")
+            name = data_user.get("name")
+            title = task.get("title")
+            writer.writerow([userId, name, title])
 
 
 if __name__ == "__main__":
