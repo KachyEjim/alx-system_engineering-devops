@@ -22,7 +22,8 @@ def get_employee_tasks(employeeId):
 
     record = ''
     for task in data_todos:
-        record += f'"{task.get("userId")}","{data_user.get("name")}","{task.get("title")}"\n'
+        record += f'"{task.get("userId")}\
+        ","{data_user.get("name")}","{task.get("title")}"\n'
     with open('{}.csv'.format(employeeId), 'w') as file:
         file.write(record)
 
