@@ -26,7 +26,7 @@ def get_employee_tasks(id):
                 "completed": todo.get("completed"),
                 "username": userName,}]
                 }
-            
+            data[id].append(temp)
         json.dump(data, f)
 
 
