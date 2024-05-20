@@ -24,7 +24,7 @@ def get_employee_tasks(employeeId):
     for task in data_todos:
         if task.get('completed') is True:
             tasks.append(task.get('title'))
-    
+
     print("Employee {} is done with tasks({}/{}):".format(
         data_user.get('name'), len(tasks), len(data_todos)))
     for task in tasks:
