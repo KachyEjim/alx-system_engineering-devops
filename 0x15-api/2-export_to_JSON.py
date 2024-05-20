@@ -4,40 +4,32 @@ a given employee ID, returns
 information about his/her TODO list progress."""
 
 import json
+from sys import argv
 import requests
 
 
 def get_employee_tasks(id):
-    """script to export data in the JSON format."""
+    """ Get employee tasks """
+    url = f'https://jsonplaceholder.typicode.com/'
+    users = f'users?id={id}'
+    todos = f'todos?userId={id}'
+    userData = requests.get(f'{url}{users}').json()
+    userName = userData[0].get("username")
+    todosData = requests.get(f'{url}{todos}').json()
 
-    data_dict = {}
-
-    while True:
-        url = "https://jsonplaceholder.typicode.com/"
-        users = f"users?id={id}"
-        todos = f"todos?userId={id}"
-        userData = requests.get(f"{url}{users}").json()
-
-        if not userData:
-            break
-
-        userName = userData[0].get("username")
-        todosData = requests.get(f"{url}{todos}").json()
-
-        data_dict[id] = [
-            {
-                "username": userName,
-                "task": task.get("title"),
-                "completed": task.get("completed")
-            }
-            for task in todosData
-        ]
-
-        id += 1
-
-    with open("todo_all_employees.json", "w") as f:
-        json.dump(data_dict, f)
+    """Export into csv"""
+    with open(f'{id}.json', 'w') as f:
+        data = {id: []}
+        for todo in todosData:
+            temp = {id: [{
+                "task": todo.get("title"),
+                "completed": todo.get("completed"),
+                "username": userName,}]
+                }
+            
+        json.dump(data, f)
 
 
 if __name__ == "__main__":
-    get_employee_tasks()
+    id = argv[1]
+    get_employee_tasks(id)
