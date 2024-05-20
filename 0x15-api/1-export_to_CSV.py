@@ -5,29 +5,27 @@ information about his/her TODO list progress."""
 
 import json
 from sys import argv
-import urllib
-import urllib.request
+import requests
 
 
 def get_employee_tasks(employeeId):
     """ Get employee tasks """
-    url_todos = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
-        employeeId)
-    url_users_name = 'https://jsonplaceholder.typicode.com/users/{}'.format(
-        employeeId)
-    response_todos = urllib.request.urlopen(url_todos).read()
-    response_user = urllib.request.urlopen(url_users_name).read()
-    data_todos = json.loads(response_todos)
-    data_user = json.loads(response_user)
+    url = f'https://jsonplaceholder.typicode.com/'
+    users = f'users?id={id}'
+    todos = f'todos?userId={id}'
+    done = f'{todos}&completed=true'
+    notDone = f'{todos}&completed=false'
+    userData = requests.get(f'{url}{users}').json()
+    Name = userData[0].get("name")
+    userName = userData[0].get("username")
+    todosData = requests.get(f'{url}{todos}').json()
 
-    record = ''
-    for task in data_todos:
-        record += f'"{task.get("userId")}\
-        ","{data_user.get("name")}\
-        ","{data_user.get("completed")}\
-        ","{task.get("title")}"\n'
-    with open('{}.csv'.format(employeeId), 'w') as file:
-        file.write(record)
+    """Export into csv"""
+    with open(f'{id}.csv', 'w') as f:
+        for todo in todosData:
+            data = f'"{id}","{userName}","{todo.get("completed")}",'
+            data2 = f'"{todo.get("title")}"\n'
+            f.write(data+data2)
 
 
 if __name__ == "__main__":
