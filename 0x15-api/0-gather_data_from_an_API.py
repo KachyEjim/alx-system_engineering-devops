@@ -3,10 +3,10 @@
 a given employee ID, returns
 information about his/her TODO list progress."""
 
+import json
+from sys import argv
 import urllib
 import urllib.request
-from sys import argv
-import json
 
 
 def get_employee_tasks(employeeId):
@@ -19,7 +19,7 @@ def get_employee_tasks(employeeId):
     response_user = urllib.request.urlopen(url_users_name).read()
     data_todos = json.loads(response_todos)
     data_user = json.loads(response_user)
-    
+
     tasks = []
     for task in data_todos:
         if task.get('completed') is True:
