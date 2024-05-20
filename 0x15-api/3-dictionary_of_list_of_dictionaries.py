@@ -1,15 +1,11 @@
 #!/usr/bin/python3
-""" Python script that, using this REST API, for
-a given employee ID, returns
-information about his/her TODO list progress."""
-
+""" module doc """
 import json
 import requests
 
 
-def get_employee_tasks(id):
-    """script to export data in the JSON format."""
-
+def main():
+    id = 1
     data_dict = {}
 
     while True:
@@ -40,4 +36,4 @@ def get_employee_tasks(id):
 
 
 if __name__ == "__main__":
-    get_employee_tasks()
+    main()
