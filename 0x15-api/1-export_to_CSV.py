@@ -8,7 +8,7 @@ from sys import argv
 import requests
 
 
-def get_employee_tasks(employeeId):
+def get_employee_tasks(id):
     """ Get employee tasks """
     url = f'https://jsonplaceholder.typicode.com/'
     users = f'users?id={id}'
