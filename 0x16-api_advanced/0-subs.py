@@ -3,7 +3,9 @@
 
 
 def number_of_subscribers(subreddit):
-    """Returns subscriber count of subreddit or 0"""
+    """
+    Returns subscriber count of subreddit or 0
+    """
     from requests import get
 
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
