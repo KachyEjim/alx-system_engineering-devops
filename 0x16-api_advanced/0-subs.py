@@ -1,20 +1,32 @@
 #!/usr/bin/python3
-"""FILE DOC"""
+""" How many subs? """
 
-import requests
+from requests import get
 
 
 def number_of_subscribers(subreddit):
-    """
-    function that queries the Reddit API and returns
-    the number of subscribers for a given subreddit.
-    """
+    """Returns subscriber count of subreddit or 0"""
+
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {"User-Agent": "0x16-api_advanced/V1"}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data["data"]["subscribers"]
-        return subscribers
-    else:
+
+    headers = {"user-agent": "my-app/0.0.1"}
+
+    r = get(url, headers=headers, allow_redirects=False)
+
+    if r.status_code != 200:
         return 0
+
+    try:
+        js = r.json()
+
+    except ValueError:
+        return 0
+
+    data = js.get("data")
+
+    if data:
+        sub_count = data.get("subscribers")
+        if sub_count:
+            return sub_count
+
+    return 0
