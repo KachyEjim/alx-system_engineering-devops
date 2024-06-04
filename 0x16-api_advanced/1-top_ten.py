@@ -14,14 +14,14 @@ def top_ten(subreddit):
 
     headers = {"user-agent": "my-app/0.0.1"}
 
-    r = get(url, headers=headers, allow_redirects=False)
+    response = get(url, headers=headers, allow_redirects=False)
 
     if r.status_code != 200:
         print(None)
         return None
 
     try:
-        js = r.json()
+        result = response.json()
 
     except ValueError:
         print(None)
@@ -29,9 +29,9 @@ def top_ten(subreddit):
 
     try:
 
-        data = js.get("data")
+        data = result.get("data")
         children = data.get("children")
-        for child in children:
+        for child in children[:10]:
             post = child.get("data")
             print(post.get("title"))
 
