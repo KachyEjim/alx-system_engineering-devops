@@ -21,7 +21,7 @@ def number_of_subscribers(subreddit):
     try:
         js = r.json()
 
-    except ValueError:
+    except Exception:
         return 0
 
     data = js.get("data")
