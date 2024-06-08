@@ -9,9 +9,9 @@ def number_of_subscribers(subreddit):
     Returns subscriber count of subreddit or 0
     """
 
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
 
-    headers = {"user-agent": "my-app/0.0.1"}
+    headers = {"user-agent": "Kachy.tech"}
 
     r = get(url, headers=headers, allow_redirects=False)
 
