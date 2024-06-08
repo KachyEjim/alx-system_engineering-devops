@@ -11,7 +11,7 @@ def number_of_subscribers(subreddit):
 
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
 
-    headers = {"user-agent": "Kachy.tech"}
+    headers = {"user-agent": "Kachytech"}
 
     r = get(url, headers=headers, allow_redirects=False)
 
