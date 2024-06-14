@@ -3,11 +3,24 @@ server {
     server_name 54.84.237.159;
 
     location / {
-        proxy_pass http://127.0.0.1:5003/2-hbnb.py;
+        proxy_redirect off;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://127.0.0.1:5003/2-hbnb;
+    }
+
+    error_page 404 /404.html;
+    add_header X-Serverd-By 'web-01';
+
+    location = /404.html {
+        root /var/www/html;
+        internal;
+    }
+
+    location = /redirect_me {
+        return 301 $scheme://youtube.com/@sammykingx;
     }
 
     location /static/ {
